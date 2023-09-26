@@ -1,77 +1,78 @@
-
 import {
   View,
   StyleSheet,
   Dimensions,
   Text,
   StatusBar,
-  TouchableOpacity,
-  ActivityIndicator,
-  TextInput,
-  Button
+  Button,
 } from 'react-native';
 
 import React from 'react';
 
-//variavel que pega a largura da tela:
 const windowWidth = Dimensions.get('window').width;
-
-//variavel que pega a altura da tela:
 const windowHeight = Dimensions.get('window').height;
-
-//variavel que pega a altura barra de status, que fica no topo da tela:
 const statusBarHeight = StatusBar.currentHeight;
 
-//componente de classe com react:
 export default class App extends React.Component {
   state = {
     email: '',
     password: '',
-	objeto:{},
+    objeto: [],
   };
 
-//função para cuidar do valor de e-mail:
   handleEmailChange = (newText) => {
     this.setState({
       email: newText,
     });
   };
 
-//função para cuidar do valor de senha:
   handlePasswordChange = (newText) => {
     this.setState({
       password: newText,
     });
   };
 
-//fecth para buscar informações de usuários cadastrados:
-  login = async () => {
-   fetch('http://192.168.1.64:3000/login')
-   
-   //transformar a resposta em json:
-  .then(response => response.json())
-  
-    //declarar a variavel objeto como essa resposta json:
-  .then(data => {
-    this.setState({
-	objeto: data
-	})
-  })
-  
-  //verificar se há erro:
-  .catch(error => {
-    console.error(error);
-  })}
-  
+  componentWillMount() {
+    login = async () => {
+      try {
+        const response = await fetch('http://192.168.1.64:3000/login');
+        const data = await response.json();
+
+        // Verifique se o array tem pelo menos dois elementos
+        if (data.length >= 2) {
+          // Atualize o estado com os dados da API
+          this.setState({
+            email: data[1].email,
+            password: data[1].password,
+            objeto: data,
+          });
+
+          // Agora você pode acessar as informações
+          console.log('Email:', this.state.email);
+          console.log('Senha:', this.state.password);
+          console.log('Objeto completo:', this.state.objeto);
+        } else {
+          console.error(
+            'Não há dados suficientes no array para acessar o segundo elemento.'
+          );
+        }
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    }
+
+
+  }
+
   render() {
     return (
-	<View style={styles.container}>
-	<Text>
-	{
-	//passar JSON para string para poder mostrar em tela
-	JSON.stringify(this.state.objeto)}
-	</Text>
-          <Button title='mostrar' onPress={() => this.login()} />
+      <View style={styles.container}>
+        <Text>
+          {JSON.stringify(
+            this.state.objeto[1]?.email || 'Nenhum email disponível'
+          )}
+        </Text>
+        <Button title='mostrar' onPress={() => this.login()} />
       </View>
     );
   }
