@@ -1,12 +1,10 @@
 import Register from './components/register';
 import Login from './components/login';
 import { ScrollView } from 'react-native';
-export default function App(){
-	return(
-    <ScrollView>
-<Login/>
-<Register/>
-    </ScrollView>
-	
-	)
+import { NavigationContainer } from '@react-navigation/native';
+import { View, Text } from 'react-native';
+import Nav from './Routing/Navbar';
+
+export default function App() {
+  return <Nav />;
 }

@@ -32,7 +32,6 @@ export default class App extends React.Component {
     });
   };
 
-  componentWillMount() {
     login = async () => {
       try {
         const response = await fetch('http://192.168.1.64:3000/login');
@@ -59,11 +58,7 @@ export default class App extends React.Component {
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
-    }
-
-
-  }
-
+    };
   render() {
     return (
       <View style={styles.container}>
@@ -83,11 +78,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: statusBarHeight,
+    //marginTop: statusBarHeight,
     backgroundColor: '#0c164e',
-    width: windowWidth,
+    //width: windowWidth,
     alignItems: 'center',
-    height: windowHeight,
+    //height: windowHeight,
     backgroundColor: '#fff',
   },
   esqueceu: {
