@@ -20,29 +20,37 @@ const windowHeight = Dimensions.get('window').height;
 const statusBarHeight = StatusBar.currentHeight;
 
 //componente de classe com react:
-export default class Register extends React.Component {
+export default class setRating extends React.Component {
   state = {
-    email: '',
-    password: '',
+    nota: '',
+    texto: '',
+    idUser: 0,
   };
 
   //função para cuidar do valor de e-mail:
-  handleEmailChange = (newText) => {
+  handleRatingChange = (newText) => {
     this.setState({
-      email: newText,
+      nota: newText,
     });
   };
 
   //função para cuidar do valor de senha:
-  handlePasswordChange = (newText) => {
+  handleTextChange = (newText) => {
     this.setState({
-      password: newText,
+      texto: newText,
+    });
+  };
+
+  //função para cuidar do valor de senha:
+  handleIdChange = (newText) => {
+    this.setState({
+      idUser: newText,
     });
   };
 
   //função para cadastrar usuario
   cadastraUsuario = async () => {
-    let response = await fetch('http://192.168.1.64:3000/createUser', {
+    let response = await fetch('http://192.168.1.64:3000/createRatings', {
       method: 'POST',
       //esse headers define o tipo de resposta que aceitamos:
       headers: {
@@ -51,8 +59,9 @@ export default class Register extends React.Component {
       },
       //esse body é por onde as informações são enviadas para o backend
       body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
+        texto: this.state.texto,
+        nota: this.state.nota,
+        idUser: this.state.idUser,
       }),
     });
     console.log(response);
@@ -61,19 +70,27 @@ export default class Register extends React.Component {
     return (
       <View style={styles.inputWrapper}>
         <View style={{ alignItems: 'center', width: 350 }}>
-          <Text style={styles.titulo}> Cadastro </Text>
+          <Text style={styles.titulo}> Criar Avaliação </Text>
         </View>
 
         <TextInput
-          placeholder='Digite um e-mail'
+          placeholder='nota'
           style={styles.textInput}
-          onChangeText={this.handleEmailChange}
+          onChangeText={this.handleRatingChange}
+          numeric={true}
         />
 
         <TextInput
-          placeholder='Digite uma senha'
+          placeholder='Digite um texto'
           style={styles.textInput}
-          onChangeText={this.handlePasswordChange}
+          onChangeText={this.handleTextChange}
+        />
+
+        <TextInput
+          placeholder='Digite seu id'
+          style={styles.textInput}
+          onChangeText={this.handleIdChange}
+          numeric={true}
         />
 
         <View style={styles.button}>

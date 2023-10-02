@@ -20,6 +20,14 @@ export default function Redirector(props) {
           title='Registro'
           onPress={() => props.navigation.navigate('Register')}
         />
+        <Button
+          title='Avaliações'
+          onPress={() => props.navigation.navigate('Ratings')}
+        />
+        <Button
+          title='Criar Avaliações'
+          onPress={() => props.navigation.navigate('setRating')}
+        />
       </View>
     </View>
   );

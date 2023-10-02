@@ -4,6 +4,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Redirector from '../components/redirector';
 import Register from '../components/register';
 import Login from '../components/login';
+import Ratings from '../components/ratings';
+import setRating from '../components/setRating';
 
 class Stack extends Component {
   render() {
@@ -13,9 +15,11 @@ class Stack extends Component {
 
 const myStack = createStackNavigator(
   {
-    'Redirector': Redirector,
-    'Register': Register,
-    'Login': Login,
+    Redirector: Redirector,
+    Register: Register,
+    Login: Login,
+    Ratings: Ratings,
+    setRating: setRating,
   },
   {
     initialRouteName: 'Redirector',
