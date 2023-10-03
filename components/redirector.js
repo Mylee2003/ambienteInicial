@@ -28,6 +28,10 @@ export default function Redirector(props) {
           title='Criar Avaliações'
           onPress={() => props.navigation.navigate('setRating')}
         />
+                <Button
+          title='Todos os Usuarios'
+          onPress={() => props.navigation.navigate('AllUsers')}
+        />
       </View>
     </View>
   );

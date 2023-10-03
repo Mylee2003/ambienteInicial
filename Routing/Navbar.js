@@ -6,6 +6,7 @@ import Register from '../components/register';
 import Login from '../components/login';
 import Ratings from '../components/ratings';
 import setRating from '../components/setRating';
+import AllUsers from '../components/allUsers';
 
 class Stack extends Component {
   render() {
@@ -20,6 +21,7 @@ const myStack = createStackNavigator(
     Login: Login,
     Ratings: Ratings,
     setRating: setRating,
+    AllUsers: AllUsers,
   },
   {
     initialRouteName: 'Redirector',

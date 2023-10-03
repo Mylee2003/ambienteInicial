@@ -71,3 +71,9 @@ app.post('/createRatings', async (req, res) => {
     console.log(error);
   }
 });
+
+app.get('/getAllUsers', async (req, res) => {
+  let allUsers = await user.findAll();
+  console.log(allUsers);
+  res.send(allUsers)
+});
