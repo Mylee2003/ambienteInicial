@@ -18,7 +18,7 @@ export default class App extends Component {
   }
 
   getUsers = async () => {
-    fetch('http://192.168.1.64:3000/getAllUsers')
+    fetch('http://10.67.168.152:3000/getAllUsers')
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -43,8 +43,8 @@ export default class App extends Component {
           renderItem={({ item }) => (
             <View style={{ marginTop: 20 }}>
               <Text> id: {item.id}</Text>
-              <Text> cep: {item.email}</Text>
-              <Text> estado: {item.password}</Text>
+              <Text> email: {item.email}</Text>
+              <Text> senha: {item.password}</Text>
               <View
                 style={{ width: 300, height: 1, backgroundColor: 'black' }}
               ></View>

@@ -18,7 +18,7 @@ export default class App extends Component {
   }
 
   getAdresses = async () => {
-    fetch('http://192.168.1.64:3000/getAllAdresses')
+    fetch('http://10.67.168.152:3000/getAllAdresses')
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

@@ -51,7 +51,7 @@ export default class Login extends React.Component {
 
   login = async () => {
     try {
-      let response = await fetch('http://192.168.1.64:3000/login', {
+      let response = await fetch('http://10.67.168.152:3000/login', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -104,7 +104,7 @@ export default class Login extends React.Component {
 
         <View style={styles.button}>
           <Button
-            title='Registrar'
+            title='Logar'
             onPress={() => this.login()}
             style={styles.button}
           />

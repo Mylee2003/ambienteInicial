@@ -38,9 +38,16 @@ export default function Redirector(props) {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => props.navigation.navigate('RegisterAdress')}
+        onPress={() => props.navigation.navigate('RegisterUserAdress')}
       >
-        <Text>Registrar Endereço</Text>
+        <Text>Registrar Endereço de Usuario</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => props.navigation.navigate('RegisterClinicAdress')}
+      >
+        <Text>Registrar Endereço de clinica</Text>
       </TouchableOpacity>
 
       <View
@@ -49,10 +56,32 @@ export default function Redirector(props) {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => props.navigation.navigate('Ratings')}
+        onPress={() => props.navigation.navigate('AllRatings')}
       >
-        <Text>Avaliações</Text>
+        <Text>Todas Avaliações</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => props.navigation.navigate('AllUsers')}
+      >
+        <Text>Todos Usuarios</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => props.navigation.navigate('AllAdresses')}
+      >
+        <Text>Todos os endereços</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => props.navigation.navigate('AllClinics')}
+      >
+        <Text>Todas Clínicas</Text>
+      </TouchableOpacity>
+
     </View>
   );
 }

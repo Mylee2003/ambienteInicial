@@ -66,6 +66,11 @@ app.get('/getAllAdresses', async (req, res) => {
   res.send(allAdresses);
 });
 
+app.get('/getAllUsers', async (req, res) => {
+  let allUsers = await user.findAll();
+  res.send(allUsers);
+});
+
 app.post('/createRatings', async (req, res) => {
   try {
     //método do sequelize para criar linhas no banco;

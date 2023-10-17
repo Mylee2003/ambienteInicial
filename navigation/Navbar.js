@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Redirector from '../components/redirector';
-import Register from '../components/register';
+import Register from '../components/registerUser';
 import Login from '../components/login';
 import Ratings from '../components/allRatings';
-import RegisterAdress from '../components/registerAdress';
+import RegisterUserAdress from '../components/registerUserAdress';
+import RegisterClinicAdress from '../components/registerClinicAdress';
 import SetRating from '../components/setRating';
+import AllAdresses from '../components/allAdresses';
+import AllUsers from '../components/allUsers';
+import AllRatings from '../components/allRatings';
+import AllClinics from '../components/AllClinics';
 
 class Stack extends Component {
   render() {
@@ -20,8 +25,13 @@ const myStack = createStackNavigator(
     Register: Register,
     Login: Login,
     Ratings: Ratings,
-    RegisterAdress: RegisterAdress,
+    RegisterUserAdress: RegisterUserAdress,
+    RegisterClinicAdress:RegisterClinicAdress,
     SetRating: SetRating,
+    AllRatings: AllRatings,
+    AllAdresses: AllAdresses,
+    AllUsers: AllUsers,
+    AllClinics: AllClinics,
   },
   {
     initialRouteName: 'Redirector',
