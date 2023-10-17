@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Redirector from '../components/redirector';
-import Register from '../components/registerUser';
+import RegisterUser from '../components/registerUser';
 import Login from '../components/login';
 import Ratings from '../components/allRatings';
 import RegisterUserAdress from '../components/registerUserAdress';
@@ -22,7 +22,7 @@ class Stack extends Component {
 const myStack = createStackNavigator(
   {
     Redirector: Redirector,
-    Register: Register,
+    RegisterUser: RegisterUser,
     Login: Login,
     Ratings: Ratings,
     RegisterUserAdress: RegisterUserAdress,

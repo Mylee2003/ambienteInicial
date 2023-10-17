@@ -24,9 +24,9 @@ export default function Redirector(props) {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => props.navigation.navigate('Register')}
+        onPress={() => props.navigation.navigate('RegisterUser')}
       >
-        <Text>Registro</Text>
+        <Text>Registrar Usuário</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -41,13 +41,6 @@ export default function Redirector(props) {
         onPress={() => props.navigation.navigate('RegisterUserAdress')}
       >
         <Text>Registrar Endereço de Usuario</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => props.navigation.navigate('RegisterClinicAdress')}
-      >
-        <Text>Registrar Endereço de clinica</Text>
       </TouchableOpacity>
 
       <View
