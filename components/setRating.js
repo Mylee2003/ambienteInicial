@@ -34,7 +34,7 @@ export default class App extends Component {
   }
 
   getEvaluations = async () => {
-    fetch('http://10.67.168.152:3000/getAllRatings')
+    fetch('https://10.67.168.152:3000/getAllRatings')
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

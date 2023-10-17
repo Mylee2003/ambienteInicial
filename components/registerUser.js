@@ -42,7 +42,7 @@ export default class RegisterUser extends React.Component {
 
   //função para cadastrar usuario
   cadastraUsuario = async () => {
-    let response = await fetch('http://10.67.168.145:3000/createUser', {
+    let response = await fetch('https://10.67.168.145:3000/createUser', {
       method: 'POST',
       //esse headers define o tipo de resposta que aceitamos:
       headers: {
@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: windowHeight - statusBarHeight,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
   },
   titulo: {

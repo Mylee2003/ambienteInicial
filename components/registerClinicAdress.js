@@ -43,7 +43,7 @@ export default class App extends Component {
   };
 
   cadastraEndereco = async () => {
-    const response = await fetch('http://10.67.168.152:3000/createAdress', {
+    const response = await fetch('https://10.67.168.152:3000/createAdress', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

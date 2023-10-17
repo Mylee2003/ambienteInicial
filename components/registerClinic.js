@@ -42,7 +42,7 @@ import {
   
     //função para cadastrar usuario
     cadastraUsuario = async () => {
-      let response = await fetch('http://10.67.168.152:3000/createClinic', {
+      let response = await fetch('https://10.67.168.152:3000/createClinic', {
         method: 'POST',
         //esse headers define o tipo de resposta que aceitamos:
         headers: {
@@ -94,7 +94,6 @@ import {
       alignItems: 'center',
       height: windowHeight - statusBarHeight,
       backgroundColor: '#fff',
-      alignItems: 'center',
       justifyContent: 'center',
     },
     titulo: {

@@ -82,13 +82,11 @@ export default function Redirector(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#0c164e',
     width: windowWidth,
     alignItems: 'center',
     height: windowHeight,
-    backgroundColor: '#fff',
   },
   button: {
     width: 300,

@@ -18,7 +18,7 @@ export default class App extends Component {
   }
 
   getUsers = async () => {
-    fetch('http://10.67.168.152:3000/getAllUsers')
+    fetch('https://10.67.168.152:3000/getAllUsers')
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
