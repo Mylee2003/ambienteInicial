@@ -1,140 +1,66 @@
-import {
-  View,
-  StyleSheet,
-  Dimensions,
-  Text,
-  StatusBar,
-  TextInput,
-  Button,
-} from 'react-native';
+import React, { Component } from 'react';
+import {} from 'react-native';
+import DropDownPicker from 'react-native-dropdown-picker';
 
-import React from 'react';
+export default class App extends Component {
+  constructor(props) {
+    super(props);
 
-//variavel que pega a largura da tela:
-const windowWidth = Dimensions.get('window').width;
+    this.state = {
+      open: false,
+      value: null,
+      items: [],
+    };
 
-//variavel que pega a altura da tela:
-const windowHeight = Dimensions.get('window').height;
+    this.setValue = this.setValue.bind(this);
+  }
 
-//variavel que pega a altura barra de status, que fica no topo da tela:
-const statusBarHeight = StatusBar.currentHeight;
-
-//componente de classe com react:
-export default class setRating extends React.Component {
-  state = {
-    nota: '',
-    texto: '',
-    idUser: 0,
-  };
-
-  //função para cuidar do valor de e-mail:
-  handleRatingChange = (newText) => {
+  setOpen(open) {
     this.setState({
-      nota: newText,
+      open: !open,
     });
+  }
+
+  setValue(callback) {
+    this.setState((state) => ({
+      value: callback(state.value),
+    }));
+  }
+
+  setItems(callback) {
+    this.setState((state) => ({
+      items: callback(state.items),
+    }));
+  }
+
+  getEvaluations = async () => {
+    fetch('https://10.67.168.152:3000/getAllRatings')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          items: data,
+        });
+      })
+      .catch((error) => console.log(error));
   };
 
-  //função para cuidar do valor de senha:
-  handleTextChange = (newText) => {
-    this.setState({
-      texto: newText,
-    });
-  };
+  componentDidMount() {
+    this.getEvaluations();
+  }
 
-  //função para cuidar do valor de senha:
-  handleIdChange = (newText) => {
-    this.setState({
-      idUser: newText,
-    });
-  };
-
-  //função para cadastrar usuario
-  cadastraUsuario = async () => {
-    let response = await fetch('http://192.168.1.64:3000/createRatings', {
-      method: 'POST',
-      //esse headers define o tipo de resposta que aceitamos:
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      //esse body é por onde as informações são enviadas para o backend
-      body: JSON.stringify({
-        texto: this.state.texto,
-        nota: this.state.nota,
-        idUser: this.state.idUser,
-      }),
-    });
-    console.log(response);
-  };
   render() {
+    const { open, value, items } = this.state;
+
     return (
-      <View style={styles.inputWrapper}>
-        <View style={{ alignItems: 'center', width: 350 }}>
-          <Text style={styles.titulo}> Criar Avaliação </Text>
-        </View>
-
-        <TextInput
-          placeholder='nota'
-          style={styles.textInput}
-          onChangeText={this.handleRatingChange}
-          numeric={true}
-        />
-
-        <TextInput
-          placeholder='Digite um texto'
-          style={styles.textInput}
-          onChangeText={this.handleTextChange}
-        />
-
-        <TextInput
-          placeholder='Digite seu id'
-          style={styles.textInput}
-          onChangeText={this.handleIdChange}
-          numeric={true}
-        />
-
-        <View style={styles.button}>
-          <Button
-            title='Registrar'
-            onPress={() => this.cadastraUsuario()}
-            style={styles.button}
-          />
-        </View>
-      </View>
+      <DropDownPicker
+        open={open}
+        value={value}
+        items={items}
+        setOpen={this.setOpen}
+        setValue={this.setValue}
+        setItems={this.setItems}
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  inputWrapper: {
-    width: windowWidth,
-    alignItems: 'center',
-    height: windowHeight - statusBarHeight,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  titulo: {
-    fontSize: 35,
-    color: '#0c164e',
-    marginTop: 15,
-    marginBottom: 15,
-  },
-  textInput: {
-    borderBottomWidth: 1,
-    width: 350,
-    fontSize: 18,
-    paddingLeft: 12,
-    paddingBottom: 6,
-    marginTop: 35,
-  },
-  button: {
-    marginTop: 70,
-  },
-});
-
-const individualStyles = StyleSheet.create({
-  confirmInput: {
-    marginBottom: 0,
-  },
-});
